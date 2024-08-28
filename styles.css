@@ -1,0 +1,92 @@
+.cell {
+    background-color: rgb(222, 222, 222);
+    padding: 0.5em;
+    height: fit-content;
+    border-radius: 5px;
+    margin-bottom: 1em;
+}
+
+.grid {
+    padding: 5px;
+}
+.navbar{
+    margin-bottom: 1rem;
+}
+
+.content {
+    margin-top: 0.5em;
+}
+
+button {
+    text-decoration: none !important;
+    width: 100%;
+    margin-bottom: 0.3em;
+}
+
+article > header {
+    padding-left: 0.5em;
+}
+
+.content li{
+    padding-left: 0.5em;
+    border-radius: 5px;
+    margin-bottom: 0.5em;
+    background-color: white;
+}
+
+header > nav{
+    background-color: rgb(107, 148, 208) !important;
+} 
+main{
+    background-color: rgb(86, 129, 193) ;
+    height: 100vh;
+    padding: 0 1rem;
+}
+body{
+    background-color: rgb(86, 129, 193) ;
+}
+
+
+
+.task {
+    padding: 0.2em;
+    margin-bottom: 1em;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.task strong {
+    font-size: 1.2em;
+}
+
+.task small {
+    display: block;
+    color: #7a7a7a;
+    margin-bottom: 0.5em;
+}
+
+.edit-task-btn, .delete-task-btn {
+    background: none;
+    border: none;
+    padding: 0.2em;
+    margin-left: 0.5em;
+    cursor: pointer;
+}
+
+.edit-task-btn i, .delete-task-btn i {
+    font-size: 1em; 
+}
+
+.task-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-content > div{
+    display: flex;
+}
+.task small {
+    flex-grow: 1;
+}
+
