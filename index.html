@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <script type="text/JavaScript" src="api.js"></script>
     <script src="app.js" defer></script>
-    
 </head>
 <body>
     <header>
@@ -17,157 +16,119 @@
             <div class="navbar-brand">
                 <a class="navbar-item" href="">
                     <img src="https://www.vectorlogo.zone/logos/trello/trello-official.svg" alt="">
-              
                 </a>
-                
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                    Workspaces
-                    </a>
+                    <a class="navbar-link">Workspaces</a>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                    Recent
-                    </a>
+                    <a class="navbar-link">Recent</a>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                    Started
-                    </a>
+                    <a class="navbar-link">Started</a>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                    Templates
-                    </a>
+                    <a class="navbar-link">Templates</a>
                 </div>
-                <button>Create</button>
-
+                <div class="navbar-item is-hoverable"><button id="create-column-btn">Create Column</button></div>
             </div>
-            
         </nav>
     </header>
 
     <main>
-        <section class="grid columns">
-            <article class="cell column ">
-                <header>
-                    <h2 class="list-title">To Do</h2>
-                </header>
-                <ul class="content" id="to-do-tasks">
-                    <li class="task">Tarea 1</li>
-                    <li class="task">Tarea 2</li>
-                </ul>
-                <footer>
-                    <button class="button is-text add-task-btn" data-column="to-do">+ Agregar Tarea</button>
-                </footer>
-            </article>
-
-            <article class="cell column " >
-                <header>
-                    <h2 class="list-title">In Progress</h2>
-                </header>
-                <ul class="content" id="in-progress-tasks">
-                    <li class="task">Tarea 3</li>
-                </ul>
-                <footer>
-                    <button class="button is-text add-task-btn" data-column="in-progress">+ Agregar Tarea</button>
-                </footer>
-            </article>
-
-            <article class="cell column">
-                <header>
-                    <h2 class="list-title">Done</h2>
-                </header>
-                <ul class="content" id="done-tasks">
-                    <li class="task">Tarea 4</li>
-                </ul>
-                <footer>
-                    <button class="button is-text add-task-btn" data-column="done">+ Agregar Tarea</button>
-                </footer>
-            </article>
-
-            <article class="cell column">
-                
-                <div>
-                    <button class="button is-text">+ Agregar Otra Lista</button>
-                </div>
-            </article>
+        <section class="columns-container" id="columns-container">
+            <!-- Column template for JavaScript -->
         </section>
     </main>
 
-<!-- Modal para todas las columnas -->
-<div class="modal" id="task-modal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        <div class="box">
-            <form id="task-form">
-                <input type="hidden" id="task-column" name="column">
-                <input type="hidden" id="task-id">
-
-
-                <div class="field">
-                    <label class="label">Title</label>
-                    <div class="control">
-                        <input class="input" type="text" id="task-title" name="title" required>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Description</label>
-                    <div class="control">
-                        <textarea class="textarea" id="task-description" name="description"></textarea>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Assigned</label>
-                    <div class="control">
-                        <div class="select">
-                            <select id="task-assigned" name="assigned">
-                                <option value="Person1">Person 1</option>
-                                <option value="Person2">Person 2</option>
-                                <option value="Person3">Person 3</option>
-                            </select>
+    <!-- Modal for Task Operations -->
+    <div class="modal" id="task-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <form id="task-form">
+                    <input type="hidden" id="task-column" name="column">
+                    <input type="hidden" id="task-id">
+                    <div class="field">
+                        <label class="label">Title</label>
+                        <div class="control">
+                            <input class="input" type="text" id="task-title" name="title" required>
                         </div>
                     </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Priority</label>
-                    <div class="control">
-                        <div class="select">
-                            <select id="task-priority" name="priority">
-                                <option value="High">High</option>
-                                <option value="Mid">Mid</option>
-                                <option value="Low">Low</option>
-                            </select>
+                    <div class="field">
+                        <label class="label">Description</label>
+                        <div class="control">
+                            <textarea class="textarea" id="task-description" name="description"></textarea>
                         </div>
                     </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Deadline</label>
-                    <div class="control">
-                        <input class="input" type="date" lang="en" id="task-deadline" name="deadline">
+                    <div class="field">
+                        <label class="label">Assigned</label>
+                        <div class="control">
+                            <div class="select">
+                                <select id="task-assigned" name="assigned">
+                                    <option value="Person 1">Person 1</option>
+                                    <option value="Person 2">Person 2</option>
+                                    <option value="Person 3">Person 3</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-link" type="submit">Accept</button>
+                    <div class="field">
+                        <label class="label">Priority</label>
+                        <div class="control">
+                            <div class="select">
+                                <select id="task-priority" name="priority">
+                                    <option value="High">High</option>
+                                    <option value="Mid">Mid</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="control">
-                        <button class="button is-light" type="button" id="cancel-btn">Cancel</button>
+                    <div class="field">
+                        <label class="label">Deadline</label>
+                        <div class="control">
+                            <input class="input" type="date" lang="en" id="task-deadline" name="deadline">
+                        </div>
                     </div>
-                </div>
-            </form>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-link" type="submit">Accept</button>
+                        </div>
+                        <div class="control">
+                            <button class="button is-light" type="button" id="cancel-btn">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
+        <button class="modal-close is-large" aria-label="close"></button>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
-</div>
 
-   
-
-    
+    <!-- Modal for Column Operations -->
+    <div class="modal" id="column-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <form id="column-form">
+                    <input type="hidden" id="column-id">
+                    <div class="field">
+                        <label class="label">Column Name</label>
+                        <div class="control">
+                            <input class="input" type="text" id="column-name" name="name" required>
+                        </div>
+                    </div>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-link" type="submit">Accept</button>
+                        </div>
+                        <div class="control">
+                            <button class="button is-light" type="button" id="cancel-column-btn">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 </body>
 </html>

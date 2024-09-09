@@ -1,0 +1,23 @@
+{
+  "columns": [
+    {
+      "id": "9756",
+      "name": "col 1"
+    },
+    {
+      "id": "a391",
+      "name": "col 2"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "f2a0",
+      "title": "tarea 1",
+      "description": "estoy en col 3",
+      "assigned": "Person 1",
+      "priority": "High",
+      "deadline": "",
+      "status": "9756"
+    }
+  ]
+}
